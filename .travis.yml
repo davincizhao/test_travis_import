@@ -6,7 +6,6 @@ services:
 before_install:
   - ruby -v
   - gem install travis --no-document
-  - gem version
   - travis version
 
 before_script: ./get_version.sh
