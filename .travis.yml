@@ -8,6 +8,7 @@ services:
 before_install:
   - gem install travis --no-document
   - travis version
+  - travis login --pro --github-token "${G-TOKEN}"
   - IMG_VER=`cat version.yml`
   - echo "${IMG_VER}"
   - travis env set IMAGE_VERSION "${IMG_VER}" 
