@@ -8,13 +8,13 @@ services:
 before_install:
   - gem install travis --no-document
   - IMG_VERSION=`cat version.yml`
-  - echo "${IMG_VERSION:Wq}"
+  - echo "${IMG_VERSION}"
 
 
 script:
+  - echo "${IMG_VERSION}"
   - docker login --username "davincizhao" --password-stdin <<< "${Docker_hub_pass}"
-  - docker pull davincizhao/busybox:"${IMAGE_VERSION}"
-  - docker run davincizhao/busybox:"${IMAGE_VERSION}"
+  - docker pull davincizhao/busybox:"${IMG_VERSION}"
+  - docker run davincizhao/busybox:"${IMG_VERSION}"
   - docker ps -a
   - sudo pip --quiet install yamllint
-  - echo "${IMAGE_VERSION}"
