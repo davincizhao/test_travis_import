@@ -3,7 +3,9 @@ sudo: required
 
 services:
   - docker
-
+before_install:
+  - sudo apt-get install ruby
+  - gem install --user-install travis
 
 
 before_script: ./get_version.sh
