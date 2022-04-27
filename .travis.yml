@@ -1,14 +1,16 @@
 ---
 sudo: required
 
+    
+
 services:
   - docker
 before_install:
-  - ruby -v
   - gem install travis --no-document
   - travis version
-
-before_script: ./get_version.sh
+  - IMG_VER=`cat version.yml`
+  - echo "${IMG_VER}"
+  - travis env set IMAGE_VERSION "${IMG_VER}" 
 
 
 script:
