@@ -1,23 +1,18 @@
+---
 sudo: required
 
 services:
   - docker
 
-env:
-  global:
-    - IMAGE_VERSION="v1.0.0"
 
 
-before_install:
-  - docker login --username davincizhao --password-stdin <<<  "${Docker_hub_pass}"
+before_script: ./get_version.sh
+
+
+script:
+  - docker login --username "davincizhao" --password-stdin <<< "${Docker_hub_pass}"
   - docker pull davincizhao/busybox:"${IMAGE_VERSION}"
   - docker run davincizhao/busybox:"${IMAGE_VERSION}"
   - docker ps -a
-
   - sudo pip --quiet install yamllint
-
-before_script:
-  - yamllint .travis.yml
-
-script:
   - echo "${IMAGE_VERSION}"
