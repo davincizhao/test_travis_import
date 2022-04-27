@@ -5,7 +5,7 @@ services:
 
 before_install:
 - docker login --username davincizhao --password-stdin <<<  "${Docker_hub_pass}"
-- docker pull davincizhao/busybox
+- docker pull davincizhao/busybox:v1.0.0
 - docker run davincizhao/busybox
 - docker ps -a
 
