@@ -18,3 +18,4 @@ script:
   - docker run davincizhao/busybox:"${IMG_VERSION}"
   - docker ps -a
   - sudo pip --quiet install yamllint
+  - make version
