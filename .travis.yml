@@ -7,9 +7,11 @@ services:
   - docker
 before_install:
   - gem install travis --no-document
-  - IMG_VERSION=`cat version.yml`
-  - echo "${IMG_VERSION}"
+  - IMG_VERSION=`grep int version.yml | cut -d ":" -f 2`
+  - KUBE_VERSION=`grep kube version.yml | cut -d ":" -f 2`
 
+  - echo "${IMG_VERSION}"
+  - echo "${KUBE_VERSION}"
 
 script:
   - echo "${IMG_VERSION}"
