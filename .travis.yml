@@ -6,7 +6,6 @@ sudo: required
 services:
   - docker
 before_install:
-  - gem install travis --no-document
   - IMG_VERSION=`grep int version.yml | cut -d ":" -f 2`
   - KUBE_VERSION=`grep kube version.yml | cut -d ":" -f 2`
 
@@ -18,4 +17,4 @@ script:
   - docker login --username "davincizhao" --password-stdin <<< "${Docker_hub_pass}"
   - docker pull davincizhao/busybox:"${IMG_VERSION}"
   - sudo pip --quiet install yamllint
-  - make version
+  - make
