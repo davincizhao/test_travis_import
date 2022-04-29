@@ -15,7 +15,5 @@ script:
   - echo "${IMG_VERSION}"
   - docker login --username "davincizhao" --password-stdin <<< "${Docker_hub_pass}"
   - docker pull davincizhao/busybox:"${IMG_VERSION}"
-  - docker run davincizhao/busybox:"${IMG_VERSION}"
-  - docker ps -a
   - sudo pip --quiet install yamllint
   - make version
