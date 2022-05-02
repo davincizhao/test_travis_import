@@ -12,6 +12,11 @@ before_install:
   - echo "${IMG_VERSION}"
   - echo "${KUBE_VERSION}"
 
+language: go
+
+go: 1.16.15
+
+
 script:
   - echo "${IMG_VERSION}"
   - docker login --username "davincizhao" --password-stdin <<< "${Docker_hub_pass}"
