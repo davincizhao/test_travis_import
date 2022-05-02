@@ -8,18 +8,20 @@ services:
 before_install:
   - IMG_VERSION=`grep int version.yml | cut -d ":" -f 2`
   - KUBE_VERSION=`grep kube version.yml | cut -d ":" -f 2`
+  - GO_VERSION=`grep GO version.yml | cut -d "=" -f 2`
 
   - echo "${IMG_VERSION}"
   - echo "${KUBE_VERSION}"
+  - echo "${GO_VERSION}"
 
 language: go
 
-go: 1.16.15
+go: ${GO_VERSION}
 
 
 script:
-  - echo "${IMG_VERSION}"
+  
   - docker login --username "davincizhao" --password-stdin <<< "${Docker_hub_pass}"
   - docker pull davincizhao/busybox:"${IMG_VERSION}"
   - sudo pip --quiet install yamllint
-  - make
+ 
